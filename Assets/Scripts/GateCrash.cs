@@ -6,10 +6,10 @@ using DG.Tweening;
 
 public class GateCrash : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Products products;
     void Start()
     {
-        
+        products = SpawnProduct.spawnProduct.products;
     }
 
     // Update is called once per frame
@@ -25,16 +25,49 @@ public class GateCrash : MonoBehaviour
         TextMeshProUGUI type = canvas.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         if (type.text == "")
         {
-            Multiply();
+            Multiply(count, state);
         }
         else
         {
             AddWeight(count, state);
         }
     }
-    void Multiply()
+    void Multiply(TextMeshProUGUI count, TextMeshProUGUI state)
     {
-
+        string newCount = count.text;
+        Transform parent = gameObject.transform.parent;
+        if (state.text == "-")
+        {
+            for (int i = 0; i < Convert.ToInt32(newCount); i++)
+            {
+                //Transform parent = gameObject.transform.parent;
+                if (parent.transform.childCount - i > 0)
+                {
+                    Destroy(parent.transform.GetChild(parent.transform.childCount - 1 - i).gameObject);
+                    Debug.Log(parent.transform.childCount - i);
+                }
+            }
+            return;
+        }
+        for (int i = 0; i < Convert.ToInt32(newCount); i++)
+        {
+            //Transform parent = gameObject.transform.parent;
+            var newProduct = Instantiate(products.products[ClickObject.click.productId].product, gameObject.transform.position, Quaternion.identity);
+            //Destroy(newProduct.GetComponent<GateCrash>());
+            newProduct.transform.parent = parent;
+            Vector3 scale = new Vector3(1, 1, 1);
+            newProduct.transform.localScale = gameObject.transform.localScale;
+            if (parent.transform.childCount % 2 == 0)
+            {
+                newProduct.transform.DOLocalMoveX( parent.childCount, 2);
+            }
+            else
+            {
+                newProduct.transform.DOLocalMoveX( -parent.childCount + 1, 2);
+                Debug.Log(parent.childCount);
+                Debug.Log(-parent.GetChild(parent.childCount - 2).localPosition.x);
+            }
+        }
     }
     void AddWeight(TextMeshProUGUI count, TextMeshProUGUI state)
     {

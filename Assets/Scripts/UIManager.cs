@@ -30,23 +30,23 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
-        //myWeightText.text = "" + myWeight;
+        myWeightText.text = "" + (int)myWeight;
     }
     public void MyWeightUpdate(float addWeight)
     {
-        myWeight = addWeight;
-        //DOTween.To(x => myWeight = x,myWeight, addWeight, 2);
-        myWeightText.text = "" + myWeight;
-        if (myWeight > Convert.ToInt32(minWeightText.text))
+        //myWeight = addWeight;
+        DOTween.To(x => myWeight = x, myWeight, addWeight, 2);
+        //myWeightText.text = "" + myWeight;
+        if (addWeight > Convert.ToInt32(minWeightText.text))
         {
             float spacing = Convert.ToInt32(maxWeightText.text) - Convert.ToInt32(minWeightText.text);
-            float progress = myWeight - Convert.ToInt32(minWeightText.text);
+            float progress = addWeight - Convert.ToInt32(minWeightText.text);
             float percent = progress / spacing;
-            loadingBar.DOFillAmount(percent, 0.5f);
+            loadingBar.DOFillAmount(percent, 2);
         }
         else
         {
-            loadingBar.DOFillAmount(0, 0.5f);
+            loadingBar.DOFillAmount(0, 2);
         }
     }
 }
