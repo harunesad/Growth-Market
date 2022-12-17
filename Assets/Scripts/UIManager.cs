@@ -1,18 +1,52 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static UIManager uI;
+    public Products products;
+    public Image loadingBar;
+    public TextMeshProUGUI myWeightText, minWeightText, maxWeightText;
+    public TextMeshProUGUI myWeightTypeText, minWeightTypeText, maxWeightTypeText;
+    public float myWeight;
+    string type;
+    private void Awake()
+    {
+        uI = this;
+    }
     void Start()
     {
-        
+        myWeight = products.products[ClickObject.click.productId].myWeight;
+        myWeightText.text = "" + myWeight;
+        minWeightText.text = "" + products.products[ClickObject.click.productId].minWeight;
+        maxWeightText.text = "" + products.products[ClickObject.click.productId].maxWeight;
+        myWeightTypeText.text = "" + products.products[ClickObject.click.productId].type;
+        minWeightTypeText.text = "" + products.products[ClickObject.click.productId].type;
+        maxWeightTypeText.text = "" + products.products[ClickObject.click.productId].type;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        //myWeightText.text = "" + myWeight;
+    }
+    public void MyWeightUpdate(float addWeight)
+    {
+        myWeight = addWeight;
+        //DOTween.To(x => myWeight = x,myWeight, addWeight, 2);
+        myWeightText.text = "" + myWeight;
+        if (myWeight > Convert.ToInt32(minWeightText.text))
+        {
+            float spacing = Convert.ToInt32(maxWeightText.text) - Convert.ToInt32(minWeightText.text);
+            float progress = myWeight - Convert.ToInt32(minWeightText.text);
+            float percent = progress / spacing;
+            loadingBar.DOFillAmount(percent, 0.5f);
+        }
+        else
+        {
+            loadingBar.DOFillAmount(0, 0.5f);
+        }
     }
 }
