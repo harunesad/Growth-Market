@@ -23,6 +23,7 @@ public class SpawnProduct : MonoBehaviour
         var product = Instantiate(products.products[productId].product, 
             new Vector3(0, 0.5f, -90), Quaternion.identity);
         product.transform.parent = productsParent.transform;
+        productsParent.transform.localScale=new Vector3(0.25f, 0.25f, 0.25f);
         productsParent.transform.position = new Vector3(1, productsParent.transform.position.y, productsParent.transform.position.z);
         product.AddComponent<MeshCollider>();
         product.AddComponent<Rigidbody>();
