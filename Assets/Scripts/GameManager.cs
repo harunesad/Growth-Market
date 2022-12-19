@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject productsParent;
     void Start()
     {
-        productsParent.transform.DOMoveZ(65, 50).SetEase(Ease.Linear);
+        productsParent.transform.DOMoveZ(65, 50).SetEase(Ease.Linear).SetEase(Ease.Linear);
     }
     void Update()
     {
