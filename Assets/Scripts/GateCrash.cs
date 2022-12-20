@@ -30,11 +30,13 @@ public class GateCrash : MonoBehaviour
         TextMeshProUGUI type = canvas.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         if (type.text == "")
         {
-            Multiply(count, state);
+            //Multiply(count, state);
+            MultiplyGates.multiply.Multiply(count, state, gameObject);
         }
         else
         {
-            AddWeight(count, state);
+            //AddWeight(count, state);
+            WeightGates.weight.AddWeight(count, state, gameObject);
         }
     }
     void Multiply(TextMeshProUGUI count, TextMeshProUGUI state)

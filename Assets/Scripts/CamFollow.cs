@@ -13,6 +13,12 @@ public class CamFollow : MonoBehaviour
     }
     void LateUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, productParent.transform.position + offset, Time.deltaTime * 5);
+        if (productParent.transform.parent == null)
+        {
+            transform.position = Vector3.Lerp(transform.position, productParent.transform.position + offset, Time.deltaTime * 5);
+            return;
+        }
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, Time.deltaTime * 5);
+        transform.position = Vector3.Lerp(transform.position, productParent.transform.position - Vector3.forward * 7 + Vector3.up, Time.deltaTime * 5);
     }
 }
