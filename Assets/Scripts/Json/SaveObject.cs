@@ -4,5 +4,5 @@ using System.Collections.Generic;
 public class SaveObject
 {
     public List<bool> products;
-    public List<bool> customers;
+    //public List<bool> customers;
 }

@@ -14,20 +14,21 @@ public class JsonSave : MonoBehaviour
     void Start()
     {
         save = SaveManager.Load();
-        for (int i = 0; i < products.products.Count; i++)
+        for (int i = 0; i < save.products.Count; i++)
         {
             if (save.products[i] == true)
             {
                 Instantiate(products.products[i].product, Sections.section.sections[i].transform.position, Quaternion.identity);
             }
         }
-        for (int i = 0; i < save.customers.Count; i++)
+        for (int i = 0; i < save.products.Count; i++)
         {
-            if (save.customers[i] == true)
+            if (save.products[i] == false)
             {
-                //Instantiate(products.products[i].product, Sections.section.sections[i].transform.position, Quaternion.identity);
+                return;
             }
         }
+        FindObjectOfType<SpawnCustomers>().enabled = true;
     }
     void Update()
     {

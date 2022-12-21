@@ -24,13 +24,17 @@ public class ClickObject : MonoBehaviour
     {
         for (int i = 0; i < products.products.Count; i++)
         {
-            if (products.products[i].product.name == gameObject.name)
+            if (products.products[i].product.name == gameObject.name && JsonSave.json.save.products[i] == true)
+            {
+                return;
+            }
+            if (products.products[i].product.name == gameObject.name && JsonSave.json.save.products[i] == false)
             {
                 productId = i;
-                //SpawnProduct.spawnProduct.ProductId(productId);
                 Debug.Log(productId);
             }
         }
-        SceneManager.LoadScene(1);
+        MarketUI.marketUI.GameStart();
+        MarketUI.marketUI.EnergyReduce();
     }
 }
