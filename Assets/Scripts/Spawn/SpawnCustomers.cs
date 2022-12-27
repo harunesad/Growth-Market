@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnCustomers : MonoBehaviour
 {
     public Customers customers;
+    public GameObject customerSpawnPoint;
     int customersLevel;
     string customerKey = "Customer";
     void Start()
@@ -17,7 +18,7 @@ public class SpawnCustomers : MonoBehaviour
         {
             customersLevel = 2;
         }
-        Instantiate(customers.customers[Random.Range(0, customersLevel)].customers, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(customers.customers[Random.Range(0, customersLevel)].customers, customerSpawnPoint.transform.position, Quaternion.identity);
     }
     void Update()
     {

@@ -20,8 +20,8 @@ MonoBehaviour:
     minWeight: 150
     maxWeight: 250
   - product: {fileID: 6663167126739660753, guid: eaf68d10f76eeaa4383039ca78af88cd, type: 3}
-    myWeight: 5
+    myWeight: 2
     gateMultiplier: 1
     type: KG
-    minWeight: 1
-    maxWeight: 2
+    minWeight: 4
+    maxWeight: 10

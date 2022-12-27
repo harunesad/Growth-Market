@@ -48,8 +48,16 @@ public class SpawnGates : MonoBehaviour
         switch (choose)
         {
             case 0:
-                value = "" + Random.Range(1, 6) * products.products[ClickObject.click.productId].gateMultiplier;
-                type = products.products[ClickObject.click.productId].type;
+                if (products.products[ClickObject.click.productId].type == "G")
+                {
+                    value = "" + Random.Range(1, 6) * products.products[ClickObject.click.productId].gateMultiplier;
+                    type = products.products[ClickObject.click.productId].type;
+                }
+                if (products.products[ClickObject.click.productId].type == "KG")
+                {
+                    value = "" + Random.Range(1, 2) * products.products[ClickObject.click.productId].gateMultiplier;
+                    type = products.products[ClickObject.click.productId].type;
+                }
                 break;
             case 1:
                 value = "" + Random.Range(1, 3);

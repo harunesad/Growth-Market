@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Customers
   m_EditorClassIdentifier: 
   customers:
-  - customers: {fileID: 0}
+  - customers: {fileID: 4797161832928975519, guid: cd68cfda7e1c0564c9ae07e7899a6778, type: 3}
     productsCount: 1
-  - customers: {fileID: 0}
+  - customers: {fileID: 175692964876585289, guid: 629093726d1357b4dbc95c8ff07027dc, type: 3}
     productsCount: 2
   - customers: {fileID: 0}
     productsCount: 3
