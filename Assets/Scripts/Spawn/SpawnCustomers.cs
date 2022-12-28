@@ -18,7 +18,9 @@ public class SpawnCustomers : MonoBehaviour
         {
             customersLevel = 2;
         }
-        Instantiate(customers.customers[Random.Range(0, customersLevel)].customers, customerSpawnPoint.transform.position, Quaternion.identity);
+        int customerId = Random.Range(0, 1);
+        Quaternion rotation = customers.customers[customerId].customers.transform.rotation;
+        Instantiate(customers.customers[customerId].customers, customerSpawnPoint.transform.position, rotation);
     }
     void Update()
     {
