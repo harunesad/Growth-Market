@@ -1,21 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CustomerMoveToDoorState : CustomerBaseState
 {
-    public override void EnterState(CustomerStateManager customerStateManager)
+    float switchTime;
+    public override void EnterState(CustomerStateManager customer)
     {
-        throw new System.NotImplementedException();
+        switchTime = 0;
+        customer.animator.SetBool("Walk", true);
+        customer.gameObject.transform.DOMoveX(customer.door.transform.position.x + 1, 2).SetEase(Ease.Linear).OnComplete(
+            () => 
+            {
+                customer.animator.SetBool("Walk", false);
+                customer.animator.SetTrigger("Open");
+                //customer.animator.SetBool("Walk", true);
+                customer.Invoke("DoorOpen", 0.9f);
+                //customer.Invoke("Walk", 1.25f);
+            });
     }
 
-    public override void OntriggerEnter(CustomerStateManager customerStateManager, Collider other)
+    public override void OntriggerEnter(CustomerStateManager customer, Collider other)
     {
-        throw new System.NotImplementedException();
+
     }
 
-    public override void UpdateState(CustomerStateManager customerStateManager)
+    public override void UpdateState(CustomerStateManager customer)
     {
-        throw new System.NotImplementedException();
+        switchTime += Time.deltaTime;
+        if (switchTime >= 3.25f)
+        {
+            customer.SwitchState(customer.moveToProductState);
+        }
     }
 }

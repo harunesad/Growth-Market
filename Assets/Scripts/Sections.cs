@@ -6,6 +6,7 @@ public class Sections : MonoBehaviour
 {
     public static Sections section;
     public List<GameObject> sections = new List<GameObject>();
+    public List<GameObject> shelves = new List<GameObject>();
     private void Awake()
     {
         section = this;

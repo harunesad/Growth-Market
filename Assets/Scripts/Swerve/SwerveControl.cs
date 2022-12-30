@@ -44,5 +44,4 @@ public class SwerveControl : MonoBehaviour
             productParent.DOMoveX(1, 0.4f);
         }
     }
-
 }

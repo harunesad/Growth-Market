@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class CustomerMoveToExitState : CustomerBaseState
 {
-    public override void EnterState(CustomerStateManager customerStateManager)
+    public override void EnterState(CustomerStateManager customer)
     {
-        throw new System.NotImplementedException();
+        
     }
 
-    public override void OntriggerEnter(CustomerStateManager customerStateManager, Collider other)
+    public override void OntriggerEnter(CustomerStateManager customer, Collider other)
     {
-        throw new System.NotImplementedException();
+        
     }
 
-    public override void UpdateState(CustomerStateManager customerStateManager)
+    public override void UpdateState(CustomerStateManager customer)
     {
-        throw new System.NotImplementedException();
+        
     }
 }

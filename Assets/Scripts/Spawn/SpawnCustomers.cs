@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class SpawnCustomers : MonoBehaviour
 {
+    public static SpawnCustomers spawnCustomers;
     public Customers customers;
     public GameObject customerSpawnPoint;
+    public int customerId;
     int customersLevel;
     string customerKey = "Customer";
+    private void Awake()
+    {
+        spawnCustomers = this;
+    }
     void Start()
     {
         if (PlayerPrefs.HasKey(customerKey))
@@ -18,9 +24,11 @@ public class SpawnCustomers : MonoBehaviour
         {
             customersLevel = 2;
         }
-        int customerId = Random.Range(0, 1);
+        //customerId = Random.Range(0, customersLevel);
+        customerId = Random.Range(0, 1);
         Quaternion rotation = customers.customers[customerId].customers.transform.rotation;
-        Instantiate(customers.customers[customerId].customers, customerSpawnPoint.transform.position, rotation);
+        var customer = Instantiate(customers.customers[customerId].customers, customerSpawnPoint.transform.position, rotation);
+        customer.AddComponent<CustomerStateManager>();
     }
     void Update()
     {
