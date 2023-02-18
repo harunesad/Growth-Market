@@ -14,7 +14,11 @@ public class JsonSave : MonoBehaviour
     }
     void Start()
     {
-        //SaveManager.Save(save);
+        for (int i = 0; i < save.products.Count; i++)
+        {
+            save.products[i] = true;
+        }
+        SaveManager.Save(save);
         save = SaveManager.Load();
         for (int i = 0; i < save.products.Count; i++)
         {

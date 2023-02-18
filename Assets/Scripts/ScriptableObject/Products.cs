@@ -32,6 +32,7 @@ public class ProdectsSlot
     public string type;
     public float minWeight;
     public float maxWeight;
+    public int money;
 
     //public ProdectsSlot(string productName, float myWeight, float minWeight, float maxWeight)
     //{
