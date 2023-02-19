@@ -6,7 +6,6 @@ using DG.Tweening;
 
 public class MultiplyGates : MonoBehaviour
 {
-    public Products products;
     public static MultiplyGates multiply;
     private void Awake()
     {
@@ -35,7 +34,7 @@ public class MultiplyGates : MonoBehaviour
         float addMyWeight = myWeight / parent.transform.childCount;
         for (int i = 0; i < Convert.ToInt32(newCount); i++)
         {
-            var newProduct = Instantiate(products.products[ClickObject.click.productId].product, obj.transform.position, Quaternion.identity);
+            var newProduct = Instantiate(Data.data.products.products[ClickObject.click.productId].product, obj.transform.position, Quaternion.identity);
             newProduct.transform.parent = parent;
             Vector3 scale = new Vector3(1, 1, 1);
             newProduct.transform.localScale = obj.transform.localScale;

@@ -7,14 +7,24 @@ using DG.Tweening;
 public class CustomerMoveToProductState : CustomerBaseState
 {
     Vector3 targetPos;
-    int collectProduct = SpawnCustomers.spawnCustomers.customers.customers[SpawnCustomers.spawnCustomers.customerId].productsCount;
+    int collectProduct = Data.data.customers.customers[SpawnCustomers.spawnCustomers.customerId].productsCount;
+    float money = Data.data.customers.customers[SpawnCustomers.spawnCustomers.customerId].money;
     //int id;
     //GameObject productsPoint;
     public override void EnterState(CustomerStateManager customer)
     {
         //productsPoint = GameObject.Find("ProductsPoint");
         customer.id = Random.Range(0, Sections.section.sections.Count);
-        if (collectProduct == 0)
+        //if (collectProduct == 0)
+        //{
+        //    Debug.Log("sadsadsad");
+        //    Transform firstTransform = customer.firstProductsPoint.transform;
+        //    Vector3 firstPos = new Vector3(firstTransform.position.x + 1, firstTransform.position.y, firstTransform.position.z);
+        //    customer.productsPoint.transform.position = firstPos;
+        //    customer.SwitchState(customer.moveToExitState);
+        //    return;
+        //}
+        if (money < Data.data.products.products[customer.id].money)
         {
             Debug.Log("sadsadsad");
             Transform firstTransform = customer.firstProductsPoint.transform;
@@ -37,7 +47,8 @@ public class CustomerMoveToProductState : CustomerBaseState
         Transform tartgetTransform = Sections.section.sections[customer.id].transform;
         targetPos = new Vector3(tartgetTransform.position.x, customer.transform.position.y, tartgetTransform.position.z);
         customer.GetComponent<NavMeshAgent>().SetDestination(targetPos);
-        collectProduct--;
+        //collectProduct--;
+        money -= Data.data.products.products[customer.id].money;
     }
 
     public override void OntriggerEnter(CustomerStateManager customer, Collider other)

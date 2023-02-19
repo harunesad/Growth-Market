@@ -6,7 +6,6 @@ using DG.Tweening;
 
 public class WeightGates : MonoBehaviour
 {
-    public Products products;
     public static WeightGates weight;
     private void Awake()
     {

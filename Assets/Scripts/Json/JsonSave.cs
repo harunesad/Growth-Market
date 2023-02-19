@@ -7,24 +7,23 @@ public class JsonSave : MonoBehaviour
     public static JsonSave json;
     public List<GameObject> product = new List<GameObject>();
     public SaveObject save;
-    public Products products;
     private void Awake()
     {
         json = this;
     }
     void Start()
     {
-        for (int i = 0; i < save.products.Count; i++)
-        {
-            save.products[i] = true;
-        }
-        SaveManager.Save(save);
+        //for (int i = 0; i < save.products.Count; i++)
+        //{
+        //    save.products[i] = true;
+        //}
+        //SaveManager.Save(save);
         save = SaveManager.Load();
         for (int i = 0; i < save.products.Count; i++)
         {
             if (save.products[i] == true)
             {
-                var product = Instantiate(products.products[i].product, Sections.section.sections[i].transform.position, Quaternion.identity);
+                var product = Instantiate(Data.data.products.products[i].product, Sections.section.sections[i].transform.position, Quaternion.identity);
                 this.product[i] = product;
             }
         }

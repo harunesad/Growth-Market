@@ -8,6 +8,8 @@ public class MarketUI : MonoBehaviour
 {
     public static MarketUI marketUI;
     public TextMeshProUGUI moneyText, energyText;
+    public GameObject shelves;
+    public GameObject market;
     string moneyKey = "Money", energyKey = "Energy";
     float moneyCount, energyCount;
     private void Awake()
@@ -52,5 +54,15 @@ public class MarketUI : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(1);
+    }
+    public void ShelvesOpen()
+    {
+        bool shelvesState = shelves.activeSelf;
+        shelves.SetActive(!shelvesState);
+    }
+    public void MarketOpen()
+    {
+        bool marketState = market.activeSelf;
+        market.SetActive(!marketState);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnCustomers : MonoBehaviour
 {
     public static SpawnCustomers spawnCustomers;
-    public Customers customers;
+    //public Customers customers;
     public GameObject customerSpawnPoint;
     public int customerId;
     int customersLevel;
@@ -26,8 +26,8 @@ public class SpawnCustomers : MonoBehaviour
         }
         //customerId = Random.Range(0, customersLevel);
         customerId = Random.Range(0, 1);
-        Quaternion rotation = customers.customers[customerId].customers.transform.rotation;
-        var customer = Instantiate(customers.customers[customerId].customers, customerSpawnPoint.transform.position, rotation);
+        Quaternion rotation = Data.data.customers.customers[customerId].customers.transform.rotation;
+        var customer = Instantiate(Data.data.customers.customers[customerId].customers, customerSpawnPoint.transform.position, rotation);
         customer.AddComponent<CustomerStateManager>();
     }
     void Update()

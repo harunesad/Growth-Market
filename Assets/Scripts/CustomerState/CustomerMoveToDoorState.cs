@@ -8,16 +8,17 @@ public class CustomerMoveToDoorState : CustomerBaseState
     float switchTime;
     public override void EnterState(CustomerStateManager customer)
     {
+        customer.rightDoor.GetComponent<Animator>().SetTrigger("Open");
+        customer.leftDoor.GetComponent<Animator>().SetTrigger("Open");
         switchTime = 0;
         customer.animator.SetBool("Walk", true);
-        customer.gameObject.transform.DOMoveX(customer.door.transform.position.x + 1, 2).SetEase(Ease.Linear).OnComplete(
+        customer.gameObject.transform.DOMoveX(customer.rightDoor.transform.position.x + 1, 2).SetEase(Ease.Linear).OnComplete(
             () => 
             {
                 customer.animator.SetBool("Walk", false);
-                customer.animator.SetTrigger("Open");
-                //customer.animator.SetBool("Walk", true);
-                customer.Invoke("DoorOpen", 0.9f);
-                //customer.Invoke("Walk", 1.25f);
+                //customer.animator.SetTrigger("Open");
+                //customer.Invoke("DoorOpen", 0.9f);
+                customer.SwitchState(customer.moveToProductState);
             });
     }
 
@@ -29,9 +30,9 @@ public class CustomerMoveToDoorState : CustomerBaseState
     public override void UpdateState(CustomerStateManager customer)
     {
         switchTime += Time.deltaTime;
-        if (switchTime >= 3.25f)
-        {
-            customer.SwitchState(customer.moveToProductState);
-        }
+        //if (switchTime >= 3.25f)
+        //{
+        //    customer.SwitchState(customer.moveToProductState);
+        //}
     }
 }

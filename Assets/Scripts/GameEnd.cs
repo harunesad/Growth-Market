@@ -5,7 +5,6 @@ using DG.Tweening;
 
 public class GameEnd : MonoBehaviour
 {
-    public Products products;
     public GameObject minObj, maxObj;
     public GameObject target;
     public GameObject productsParent;
@@ -15,8 +14,8 @@ public class GameEnd : MonoBehaviour
         productsParent.transform.parent = target.transform.parent;
         productsParent.transform.DOMove(target.transform.position + (Vector3.up * 0.12f), 2).SetEase(Ease.Linear);
         objSpacing = maxObj.transform.position.y - minObj.transform.position.y;
-        weightSpacing = products.products[ClickObject.click.productId].maxWeight - products.products[ClickObject.click.productId].minWeight;
-        newWeightSpacing = products.products[ClickObject.click.productId].maxWeight - GameUI.gameUI.myWeight;
+        weightSpacing = Data.data.products.products[ClickObject.click.productId].maxWeight - Data.data.products.products[ClickObject.click.productId].minWeight;
+        newWeightSpacing = Data.data.products.products[ClickObject.click.productId].maxWeight - GameUI.gameUI.myWeight;
         newObjSpacing = newWeightSpacing * objSpacing / weightSpacing;
         Invoke("TargetMove", 2.1f);
         Invoke("CompleteProducts", 3.1f);

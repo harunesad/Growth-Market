@@ -19,9 +19,11 @@ MonoBehaviour:
     type: G
     minWeight: 150
     maxWeight: 250
+    money: 1.24
   - product: {fileID: 6663167126739660753, guid: eaf68d10f76eeaa4383039ca78af88cd, type: 3}
     myWeight: 2
     gateMultiplier: 1
     type: KG
     minWeight: 4
     maxWeight: 10
+    money: 2.5

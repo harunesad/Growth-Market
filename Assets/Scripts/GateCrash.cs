@@ -9,7 +9,7 @@ public class GateCrash : MonoBehaviour
     Products products;
     void Start()
     {
-        products = SpawnProduct.spawnProduct.products;
+        products = Data.data.products;
     }
     void Update()
     {

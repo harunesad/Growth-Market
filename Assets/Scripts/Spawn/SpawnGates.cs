@@ -5,7 +5,6 @@ using TMPro;
 
 public class SpawnGates : MonoBehaviour
 {
-    public Products products;
     public List<GameObject> gates = new List<GameObject>();
     public List<float> posX = new List<float>();
     public List<float> posZ = new List<float>();
@@ -48,15 +47,15 @@ public class SpawnGates : MonoBehaviour
         switch (choose)
         {
             case 0:
-                if (products.products[ClickObject.click.productId].type == "G")
+                if (Data.data.products.products[ClickObject.click.productId].type == "G")
                 {
-                    value = "" + Random.Range(1, 6) * products.products[ClickObject.click.productId].gateMultiplier;
-                    type = products.products[ClickObject.click.productId].type;
+                    value = "" + Random.Range(1, 6) * Data.data.products.products[ClickObject.click.productId].gateMultiplier;
+                    type = Data.data.products.products[ClickObject.click.productId].type;
                 }
-                if (products.products[ClickObject.click.productId].type == "KG")
+                if (Data.data.products.products[ClickObject.click.productId].type == "KG")
                 {
-                    value = "" + Random.Range(1, 2) * products.products[ClickObject.click.productId].gateMultiplier;
-                    type = products.products[ClickObject.click.productId].type;
+                    value = "" + Random.Range(1, 2) * Data.data.products.products[ClickObject.click.productId].gateMultiplier;
+                    type = Data.data.products.products[ClickObject.click.productId].type;
                 }
                 break;
             case 1:

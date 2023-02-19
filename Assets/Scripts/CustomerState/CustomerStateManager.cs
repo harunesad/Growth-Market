@@ -5,7 +5,8 @@ using DG.Tweening;
 
 public class CustomerStateManager : MonoBehaviour
 {
-    public GameObject door;
+    public GameObject rightDoor;
+    public GameObject leftDoor;
     public GameObject productsPoint;
     public GameObject firstProductsPoint;
     public Animator animator;
@@ -18,7 +19,8 @@ public class CustomerStateManager : MonoBehaviour
     public CustomerMoveToCounterState moveToCounterState = new CustomerMoveToCounterState();
     void Start()
     {
-        door = GameObject.Find("Door");
+        rightDoor = GameObject.Find("RightDoor");
+        leftDoor = GameObject.Find("LeftDoor");
         productsPoint = GameObject.Find("ProductsPoint");
         firstProductsPoint = GameObject.Find("FirstProductsPoint");
         animator = GetComponent<Animator>();
@@ -39,10 +41,10 @@ public class CustomerStateManager : MonoBehaviour
         currentState = state;
         state.EnterState(this);
     }
-    public void DoorOpen()
-    {
-        door.transform.parent.GetComponent<Animator>().SetBool("Open", true);
-    }
+    //public void DoorOpen()
+    //{
+    //    door.transform.parent.GetComponent<Animator>().SetBool("Open", true);
+    //}
     public void Walk()
     {
         //gameObject.GetComponent<Animator>().SetBool("Walk", true);

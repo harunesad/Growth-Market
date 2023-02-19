@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpawnProduct : MonoBehaviour
 {
     public static SpawnProduct spawnProduct;
-    public Products products;
     public GameObject productsParent;
     int productId;
     private void Awake()
@@ -20,7 +19,7 @@ public class SpawnProduct : MonoBehaviour
     {
         productId = ClickObject.click.productId;
         Debug.Log(productId);
-        var product = Instantiate(products.products[productId].product, 
+        var product = Instantiate(Data.data.products.products[productId].product, 
             new Vector3(0, 0.5f, -90), Quaternion.identity);
         product.transform.parent = productsParent.transform;
         productsParent.transform.localScale=new Vector3(0.25f, 0.25f, 0.25f);

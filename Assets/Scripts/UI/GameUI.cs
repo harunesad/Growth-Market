@@ -8,7 +8,6 @@ using DG.Tweening;
 public class GameUI : MonoBehaviour
 {
     public static GameUI gameUI;
-    public Products products;
     public Image loadingBar;
     public TextMeshProUGUI myWeightText, minWeightText, maxWeightText;
     public TextMeshProUGUI myWeightTypeText, minWeightTypeText, maxWeightTypeText;
@@ -23,14 +22,14 @@ public class GameUI : MonoBehaviour
     }
     void Start()
     {
-        myWeight = products.products[ClickObject.click.productId].myWeight;
+        myWeight = Data.data.products.products[ClickObject.click.productId].myWeight;
         myWeightText.text = "" + myWeight;
-        minWeightText.text = "" + products.products[ClickObject.click.productId].minWeight;
-        maxWeightText.text = "" + products.products[ClickObject.click.productId].maxWeight;
+        minWeightText.text = "" + Data.data.products.products[ClickObject.click.productId].minWeight;
+        maxWeightText.text = "" + Data.data.products.products[ClickObject.click.productId].maxWeight;
 
-        myWeightTypeText.text = "" + products.products[ClickObject.click.productId].type;
-        minWeightTypeText.text = "" + products.products[ClickObject.click.productId].type;
-        maxWeightTypeText.text = "" + products.products[ClickObject.click.productId].type;
+        myWeightTypeText.text = "" + Data.data.products.products[ClickObject.click.productId].type;
+        minWeightTypeText.text = "" + Data.data.products.products[ClickObject.click.productId].type;
+        maxWeightTypeText.text = "" + Data.data.products.products[ClickObject.click.productId].type;
 
         moneyCount = PlayerPrefs.GetFloat(moneyKey);
         moneyText.text = "" + moneyCount;
