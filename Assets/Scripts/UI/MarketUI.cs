@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 public class MarketUI : MonoBehaviour
 {
@@ -12,13 +13,15 @@ public class MarketUI : MonoBehaviour
     public GameObject market;
     string moneyKey = "Money", energyKey = "Energy";
     float moneyCount, energyCount;
+    int sceneId;
     private void Awake()
     {
         marketUI = this;
     }
     void Start()
     {
-        moneyCount = PlayerPrefs.GetFloat(moneyKey);
+        sceneId = SceneManager.GetActiveScene().buildIndex;
+        moneyCount = 5000;
         moneyText.text = "" + moneyCount;
 
         if (PlayerPrefs.HasKey(energyKey))
@@ -43,6 +46,7 @@ public class MarketUI : MonoBehaviour
     {
         if (energyCount > 0)
         {
+            sceneId = 2;
             StartCoroutine(SceneLoad());
         }
     }
@@ -53,7 +57,7 @@ public class MarketUI : MonoBehaviour
     IEnumerator SceneLoad()
     {
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(sceneId);
     }
     public void ShelvesOpen()
     {
@@ -64,5 +68,22 @@ public class MarketUI : MonoBehaviour
     {
         bool marketState = market.activeSelf;
         market.SetActive(!marketState);
+    }
+    public void MarketBuy(TextMeshProUGUI money)
+    {
+        if (moneyCount >= Convert.ToInt32(money.text) && sceneId != Convert.ToInt32(money.name))
+        {
+            for (int i = 0; i < JsonSave.json.save.products.Count; i++)
+            {
+                JsonSave.json.save.products[i] = false;
+            }
+            SaveManager.Save(JsonSave.json.save);
+
+            moneyCount -= Convert.ToInt32(money.text);
+            PlayerPrefs.SetFloat(moneyKey, moneyCount);
+
+            sceneId = Convert.ToInt32(money.name);
+            StartCoroutine(SceneLoad());
+        }
     }
 }
