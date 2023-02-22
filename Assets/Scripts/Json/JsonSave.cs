@@ -13,17 +13,17 @@ public class JsonSave : MonoBehaviour
     }
     void Start()
     {
-        //for (int i = 0; i < save.products.Count; i++)
-        //{
-        //    save.products[i] = true;
-        //}
-        //SaveManager.Save(save);
+        for (int i = 0; i < save.products.Count; i++)
+        {
+            save.products[i] = true;
+        }
+        SaveManager.Save(save);
         save = SaveManager.Load();
         for (int i = 0; i < save.products.Count; i++)
         {
             if (save.products[i] == true)
             {
-                var product = Instantiate(Data.data.products.products[i].product, Sections.section.sections[i].transform.position, Quaternion.identity);
+                var product = Instantiate(Data.data.products.products[i].product, Lists.lists.sections[i].transform.position, Quaternion.identity);
                 this.product[i] = product;
             }
         }

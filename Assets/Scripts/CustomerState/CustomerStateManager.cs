@@ -7,23 +7,28 @@ public class CustomerStateManager : MonoBehaviour
 {
     public GameObject rightDoor;
     public GameObject leftDoor;
+    //public GameObject counter;
     public GameObject productsPoint;
-    public GameObject firstProductsPoint;
+    //public GameObject firstProductsPoint;
     public Animator animator;
     public int id;
+    public float money;
+    public float collectedMoney;
 
     CustomerBaseState currentState;
     public CustomerMoveToDoorState moveToDoorState = new CustomerMoveToDoorState();
     public CustomerMoveToProductState moveToProductState = new CustomerMoveToProductState();
-    public CustomerMoveToExitState moveToExitState = new CustomerMoveToExitState();
     public CustomerMoveToCounterState moveToCounterState = new CustomerMoveToCounterState();
+    public CollectProductState collectProductState = new CollectProductState();
     void Start()
     {
         rightDoor = GameObject.Find("RightDoor");
         leftDoor = GameObject.Find("LeftDoor");
+        //counter = GameObject.Find("Counter");
         productsPoint = GameObject.Find("ProductsPoint");
-        firstProductsPoint = GameObject.Find("FirstProductsPoint");
+        //firstProductsPoint = GameObject.Find("FirstProductsPoint");
         animator = GetComponent<Animator>();
+        money = Data.data.customers.customers[SpawnCustomers.spawnCustomers.customerId].money;
 
         currentState = moveToDoorState;
         currentState.EnterState(this);

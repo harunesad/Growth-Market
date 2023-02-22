@@ -21,7 +21,8 @@ public class MarketUI : MonoBehaviour
     void Start()
     {
         sceneId = SceneManager.GetActiveScene().buildIndex;
-        moneyCount = 5000;
+        //PlayerPrefs.SetFloat(moneyKey, 0);
+        moneyCount = PlayerPrefs.GetFloat(moneyKey);
         moneyText.text = "" + moneyCount;
 
         if (PlayerPrefs.HasKey(energyKey))

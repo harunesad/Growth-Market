@@ -23,6 +23,12 @@ public class ClickObject : MonoBehaviour, IPointerClickHandler
                 Color newColor = new Color(myColor.r, myColor.g, myColor.b, 1);
                 gameObject.GetComponent<Image>().color = newColor;
             }
+            else if(products.products[i].product.name == gameObject.name && JsonSave.json.save.products[i] == false)
+            {
+                Color myColor = gameObject.GetComponent<Image>().color;
+                Color newColor = new Color(myColor.r, myColor.g, myColor.b, 0.5f);
+                gameObject.GetComponent<Image>().color = newColor;
+            }
         }
     }
     void Update()
