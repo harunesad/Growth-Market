@@ -13,5 +13,6 @@ public class ProductsCollect
     public GameObject customers;
     public int productsCount;
     public float money;
+    public float generosity;
 }
 

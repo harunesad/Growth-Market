@@ -8,8 +8,9 @@ using System;
 public class MarketUI : MonoBehaviour
 {
     public static MarketUI marketUI;
-    public TextMeshProUGUI moneyText, energyText;
+    public TextMeshProUGUI moneyText, energyText, collectedMoneyText, customerMoneyText, customerGenerosityText;
     public GameObject shelves;
+    public GameObject customerInfo;
     public GameObject market;
     string moneyKey = "Money", energyKey = "Energy";
     float moneyCount, energyCount;
@@ -86,5 +87,16 @@ public class MarketUI : MonoBehaviour
             sceneId = Convert.ToInt32(money.name);
             StartCoroutine(SceneLoad());
         }
+    }
+    public void MoneyUpdate(float collectedMoney)
+    {
+        collectedMoneyText.text = "" + collectedMoney;
+    }
+    public void CustomerInfoOpen()
+    {
+        //customerMoneyText.text=""+Data.data.customers.customers[cus]
+        SpawnCustomers.spawnCustomers.CustomerInfo(customerMoneyText,customerGenerosityText);
+        bool state = customerInfo.activeSelf;
+        customerInfo.SetActive(!state);
     }
 }

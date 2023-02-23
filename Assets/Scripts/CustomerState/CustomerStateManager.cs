@@ -20,6 +20,7 @@ public class CustomerStateManager : MonoBehaviour
     public CustomerMoveToProductState moveToProductState = new CustomerMoveToProductState();
     public CustomerMoveToCounterState moveToCounterState = new CustomerMoveToCounterState();
     public CollectProductState collectProductState = new CollectProductState();
+    public CustomerOfferState customerOfferState = new CustomerOfferState();
     void Start()
     {
         rightDoor = GameObject.Find("RightDoor");

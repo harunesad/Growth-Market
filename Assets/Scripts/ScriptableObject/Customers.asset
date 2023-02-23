@@ -16,30 +16,40 @@ MonoBehaviour:
   - customers: {fileID: 1972116318970838603, guid: 7b9bd4f99cc9502418d9b65caee804da, type: 3}
     productsCount: 2
     money: 4
+    generosity: 20
   - customers: {fileID: 175692964876585289, guid: 629093726d1357b4dbc95c8ff07027dc, type: 3}
     productsCount: 2
     money: 10
+    generosity: 30
   - customers: {fileID: 0}
     productsCount: 3
     money: 0
+    generosity: 0
   - customers: {fileID: 0}
     productsCount: 4
     money: 0
+    generosity: 0
   - customers: {fileID: 0}
     productsCount: 5
     money: 0
+    generosity: 0
   - customers: {fileID: 0}
     productsCount: 6
     money: 0
+    generosity: 0
   - customers: {fileID: 0}
     productsCount: 7
     money: 0
+    generosity: 0
   - customers: {fileID: 0}
     productsCount: 8
     money: 0
+    generosity: 0
   - customers: {fileID: 0}
     productsCount: 9
     money: 0
+    generosity: 0
   - customers: {fileID: 0}
     productsCount: 10
     money: 0
+    generosity: 0

@@ -14,7 +14,8 @@ public class CollectProductState : CustomerBaseState
             {
                 customer.money -= Data.data.products.products[customer.id].money;
                 customer.collectedMoney += Data.data.products.products[customer.id].money;
-                Lists.lists.sections.RemoveAt(customer.id);
+                //Lists.lists.sections.RemoveAt(customer.id);
+                MarketUI.marketUI.MoneyUpdate(customer.collectedMoney);
                 GameObject.Destroy(JsonSave.json.product[customer.id]);
 
                 Color myColor = Lists.lists.productsImage[customer.id].GetComponent<Image>().color;

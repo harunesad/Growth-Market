@@ -29,7 +29,7 @@ public class CustomerMoveToCounterState : CustomerBaseState
         if (customer.transform.position.x == targetPos.x)
         {
             customer.animator.SetBool("Walk", false);
-            //customer.SwitchState(customer.CollectProductState);
+            customer.SwitchState(customer.customerOfferState);
         }
     }
 }

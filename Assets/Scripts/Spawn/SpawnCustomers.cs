@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SpawnCustomers : MonoBehaviour
 {
@@ -33,5 +34,10 @@ public class SpawnCustomers : MonoBehaviour
     void Update()
     {
 
+    }
+    public void CustomerInfo(TextMeshProUGUI moneyText, TextMeshProUGUI generosityText)
+    {
+        moneyText.text = "" + Data.data.customers.customers[customerId].money;
+        generosityText.text = "" + Data.data.customers.customers[customerId].generosity;
     }
 }
