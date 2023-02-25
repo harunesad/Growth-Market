@@ -7,27 +7,25 @@ public class CustomerStateManager : MonoBehaviour
 {
     public GameObject rightDoor;
     public GameObject leftDoor;
-    //public GameObject counter;
     public GameObject productsPoint;
-    //public GameObject firstProductsPoint;
     public Animator animator;
     public int id;
     public float money;
     public float collectedMoney;
+    public float generosity;
 
-    CustomerBaseState currentState;
+    public CustomerBaseState currentState;
     public CustomerMoveToDoorState moveToDoorState = new CustomerMoveToDoorState();
     public CustomerMoveToProductState moveToProductState = new CustomerMoveToProductState();
     public CustomerMoveToCounterState moveToCounterState = new CustomerMoveToCounterState();
     public CollectProductState collectProductState = new CollectProductState();
     public CustomerOfferState customerOfferState = new CustomerOfferState();
+    public CustomerMoveToExitState moveToExitState = new CustomerMoveToExitState();
     void Start()
     {
         rightDoor = GameObject.Find("RightDoor");
         leftDoor = GameObject.Find("LeftDoor");
-        //counter = GameObject.Find("Counter");
         productsPoint = GameObject.Find("ProductsPoint");
-        //firstProductsPoint = GameObject.Find("FirstProductsPoint");
         animator = GetComponent<Animator>();
         money = Data.data.customers.customers[SpawnCustomers.spawnCustomers.customerId].money;
 

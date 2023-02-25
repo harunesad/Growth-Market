@@ -5,26 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Products", menuName = "ScriptableObject/Products")]
 public class Products : ScriptableObject
 {
-    public List<ProdectsSlot> products = new List<ProdectsSlot>();
-    //public void AddProduct(string productName, float myWeight, float minWeight, float maxWeight)
-    //{
-    //    bool hasProduct = false;
-    //    for (int i = 0; i < products.Count; i++)
-    //    {
-    //        if (products[i].productName == productName)
-    //        {
-    //            hasProduct = true;
-    //            break;
-    //        }
-    //    }
-    //    if (!hasProduct)
-    //    {
-    //        products.Add(new ProdectsSlot(productName, myWeight, minWeight, maxWeight));
-    //    }
-    //}
+    public List<ProductsSlot> products = new List<ProductsSlot>();
 }
 [System.Serializable]
-public class ProdectsSlot
+public class ProductsSlot
 {
     public GameObject product;
     public float myWeight;
@@ -33,12 +17,4 @@ public class ProdectsSlot
     public float minWeight;
     public float maxWeight;
     public float money;
-
-    //public ProdectsSlot(string productName, float myWeight, float minWeight, float maxWeight)
-    //{
-    //    this.productName = productName;
-    //    this.myWeight = myWeight;
-    //    this.minWeight = minWeight;
-    //    this.maxWeight = maxWeight;
-    //}
 }

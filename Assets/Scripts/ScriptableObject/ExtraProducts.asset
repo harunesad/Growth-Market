@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ccca0504557ad40bf724ec81184d91, type: 3}
+  m_Name: ExtraProducts
+  m_EditorClassIdentifier: 
+  extraProducts:
+  - product: {fileID: 6917571508096173109, guid: 26f1839bb1594314c948a1efb03c308a, type: 3}
+    money: 1
+  - product: {fileID: 7038021636640272066, guid: 919a7299e3f67394184a9876e76afda4, type: 3}
+    money: 1.5
+  - product: {fileID: 467252856447392168, guid: bcbfbfdf13e55424891125623288ba9e, type: 3}
+    money: 2
+  - product: {fileID: 2736446628126935085, guid: 3991fc6915ee1e340adf38b4462e9783, type: 3}
+    money: 2.2
+  - product: {fileID: 1086831592823639934, guid: 9d57afdba2149d543ba6f43d9470474c, type: 3}
+    money: 1.1
+  - product: {fileID: 1041297659307733662, guid: 51fdfa476041adf429c92714c3991f34, type: 3}
+    money: 1.7
+  - product: {fileID: 0}
+    money: 0
+  - product: {fileID: 0}
+    money: 0
+  - product: {fileID: 0}
+    money: 0
+  - product: {fileID: 0}
+    money: 0

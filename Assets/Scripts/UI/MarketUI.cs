@@ -2,28 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 
 public class MarketUI : MonoBehaviour
 {
     public static MarketUI marketUI;
+    CustomerStateManager customerState;
     public TextMeshProUGUI moneyText, energyText, collectedMoneyText, customerMoneyText, customerGenerosityText;
+    public Image yesOffer, noOffer;
     public GameObject shelves;
     public GameObject customerInfo;
     public GameObject market;
+    public GameObject shop;
     string moneyKey = "Money", energyKey = "Energy";
     float moneyCount, energyCount;
     int sceneId;
     private void Awake()
     {
         marketUI = this;
+        customerState = GameObject.FindObjectOfType<CustomerStateManager>();
     }
     void Start()
     {
         sceneId = SceneManager.GetActiveScene().buildIndex;
-        //PlayerPrefs.SetFloat(moneyKey, 0);
-        moneyCount = PlayerPrefs.GetFloat(moneyKey);
+        //moneyCount = PlayerPrefs.GetFloat(moneyKey);
+        moneyCount = 1000;
         moneyText.text = "" + moneyCount;
 
         if (PlayerPrefs.HasKey(energyKey))
@@ -94,9 +99,41 @@ public class MarketUI : MonoBehaviour
     }
     public void CustomerInfoOpen()
     {
-        //customerMoneyText.text=""+Data.data.customers.customers[cus]
         SpawnCustomers.spawnCustomers.CustomerInfo(customerMoneyText,customerGenerosityText);
         bool state = customerInfo.activeSelf;
         customerInfo.SetActive(!state);
+    }
+    public void OffferResult()
+    {
+        yesOffer.gameObject.SetActive(true);
+        noOffer.gameObject.SetActive(true);
+    }
+    public void OfferStart()
+    {
+        customerState.currentState = customerState.customerOfferState;
+    }
+    public void NonOffer()
+    {
+        customerState.currentState = customerState.moveToExitState;
+    }
+    public void OpenShop()
+    {
+        bool state = shop.activeSelf;
+        shop.SetActive(!state);
+    }
+    public void ExtraProductsBuy(int id)
+    {
+        //if (customerState.money >= Data.data.extraProducts.extraProducts[id].money && customerState.generosity >= Data.data.customers.customers[SpawnCustomers.spawnCustomers.customerId].generosity)
+        //{
+        //    customerState.money -= Data.data.extraProducts.extraProducts[id].money;
+        //}
+        if (moneyCount >= Data.data.extraProducts.extraProducts[id].money && JsonSave.json.save.extraProducts[id] == false)
+        {
+            moneyCount -= Data.data.extraProducts.extraProducts[id].money;
+            moneyText.text = "" + moneyCount;
+            PlayerPrefs.SetFloat(moneyKey, moneyCount);
+            JsonSave.json.ExtraProductsSave(id);
+            Lists.lists.extraProductsImage[id].color = new Color(1, 1, 1, 1);
+        }
     }
 }
