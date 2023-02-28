@@ -7,7 +7,7 @@ public class CustomerStateManager : MonoBehaviour
 {
     public GameObject rightDoor;
     public GameObject leftDoor;
-    public GameObject productsPoint;
+    public GameObject counterPoint;
     public Animator animator;
     public int id;
     public float money;
@@ -23,9 +23,10 @@ public class CustomerStateManager : MonoBehaviour
     public CustomerMoveToExitState moveToExitState = new CustomerMoveToExitState();
     void Start()
     {
+        generosity = Random.Range(0, 100);
         rightDoor = GameObject.Find("RightDoor");
         leftDoor = GameObject.Find("LeftDoor");
-        productsPoint = GameObject.Find("ProductsPoint");
+        counterPoint = GameObject.Find("CounterPoint");
         animator = GetComponent<Animator>();
         money = Data.data.customers.customers[SpawnCustomers.spawnCustomers.customerId].money;
 

@@ -13,6 +13,7 @@ public class MarketUI : MonoBehaviour
     public TextMeshProUGUI moneyText, energyText, collectedMoneyText, customerMoneyText, customerGenerosityText;
     public Image yesOffer, noOffer;
     public GameObject shelves;
+    public GameObject extraProductsPoint;
     public GameObject customerInfo;
     public GameObject market;
     public GameObject shop;
@@ -22,10 +23,14 @@ public class MarketUI : MonoBehaviour
     private void Awake()
     {
         marketUI = this;
-        customerState = GameObject.FindObjectOfType<CustomerStateManager>();
     }
     void Start()
     {
+        //for (int i = 0; i < Lists.lists.extraProductsImage.Count; i++)
+        //{
+        //    Lists.lists.extraProductsImage[i].GetComponent<Button>().onClick.AddListener(ExtraProductMove);
+        //}
+
         sceneId = SceneManager.GetActiveScene().buildIndex;
         //moneyCount = PlayerPrefs.GetFloat(moneyKey);
         moneyCount = 1000;
@@ -59,7 +64,7 @@ public class MarketUI : MonoBehaviour
     }
     void Update()
     {
-        
+
     }
     IEnumerator SceneLoad()
     {
@@ -110,17 +115,36 @@ public class MarketUI : MonoBehaviour
     }
     public void OfferStart()
     {
-        customerState.currentState = customerState.customerOfferState;
+        //customerState = GameObject.FindObjectOfType<CustomerStateManager>();
+        //customerState.currentState = customerState.customerOfferState;
+        shop.SetActive(true);
+        for (int i = 0; i < Lists.lists.extraProductsImage.Count; i++)
+        {
+            Lists.lists.extraProductsImage[i].GetComponent<Button>().onClick.AddListener(ExtraProductMove);
+        }
     }
     public void NonOffer()
     {
+        customerState = GameObject.FindObjectOfType<CustomerStateManager>();
         customerState.currentState = customerState.moveToExitState;
     }
-    public void OpenShop()
+    void ExtraProductMove()
     {
-        bool state = shop.activeSelf;
-        shop.SetActive(!state);
+        Debug.Log("extra");
+        customerState = GameObject.FindObjectOfType<CustomerStateManager>();
+        customerState.currentState = customerState.customerOfferState;
+
+        for (int i = 0; i < Lists.lists.extraProductsImage.Count; i++)
+        {
+            Lists.lists.extraProductsImage[i].GetComponent<Button>().onClick.RemoveListener(ExtraProductMove);
+        }
+        shop.SetActive(false);
     }
+    //public void OpenShop()
+    //{
+    //    bool state = shop.activeSelf;
+    //    shop.SetActive(!state);
+    //}
     public void ExtraProductsBuy(int id)
     {
         //if (customerState.money >= Data.data.extraProducts.extraProducts[id].money && customerState.generosity >= Data.data.customers.customers[SpawnCustomers.spawnCustomers.customerId].generosity)
@@ -134,6 +158,11 @@ public class MarketUI : MonoBehaviour
             PlayerPrefs.SetFloat(moneyKey, moneyCount);
             JsonSave.json.ExtraProductsSave(id);
             Lists.lists.extraProductsImage[id].color = new Color(1, 1, 1, 1);
+
+            Vector3 pos = extraProductsPoint.transform.position;
+            var extraProduct = Instantiate(Data.data.extraProducts.extraProducts[id].product, pos, Quaternion.identity);
+            JsonSave.json.extraProduct[id] = extraProduct;
+            extraProductsPoint.transform.position = new Vector3(pos.x + 0.25f, pos.y, pos.z);
         }
     }
 }

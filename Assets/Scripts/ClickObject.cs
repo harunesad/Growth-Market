@@ -15,21 +15,21 @@ public class ClickObject : MonoBehaviour, IPointerClickHandler
     }
     void Start()
     {
-        for (int i = 0; i < products.products.Count; i++)
-        {
-            if (products.products[i].product.name == gameObject.name && JsonSave.json.save.products[i] == true)
-            {
-                Color myColor = gameObject.GetComponent<Image>().color;
-                Color newColor = new Color(myColor.r, myColor.g, myColor.b, 1);
-                gameObject.GetComponent<Image>().color = newColor;
-            }
-            else if(products.products[i].product.name == gameObject.name && JsonSave.json.save.products[i] == false)
-            {
-                Color myColor = gameObject.GetComponent<Image>().color;
-                Color newColor = new Color(myColor.r, myColor.g, myColor.b, 0.5f);
-                gameObject.GetComponent<Image>().color = newColor;
-            }
-        }
+        //for (int i = 0; i < products.products.Count; i++)
+        //{
+        //    if (products.products[i].product.name == gameObject.name && JsonSave.json.save.products[i] == true)
+        //    {
+        //        Color myColor = gameObject.GetComponent<Image>().color;
+        //        Color newColor = new Color(myColor.r, myColor.g, myColor.b, 1);
+        //        gameObject.GetComponent<Image>().color = newColor;
+        //    }
+        //    else if(products.products[i].product.name == gameObject.name && JsonSave.json.save.products[i] == false)
+        //    {
+        //        Color myColor = gameObject.GetComponent<Image>().color;
+        //        Color newColor = new Color(myColor.r, myColor.g, myColor.b, 0.5f);
+        //        gameObject.GetComponent<Image>().color = newColor;
+        //    }
+        //}
     }
     void Update()
     {

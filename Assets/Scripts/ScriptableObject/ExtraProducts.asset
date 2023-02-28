@@ -23,13 +23,9 @@ MonoBehaviour:
     money: 2.2
   - product: {fileID: 1086831592823639934, guid: 9d57afdba2149d543ba6f43d9470474c, type: 3}
     money: 1.1
-  - product: {fileID: 1041297659307733662, guid: 51fdfa476041adf429c92714c3991f34, type: 3}
+  - product: {fileID: 1041297659307733662, guid: a51e116dd79cd0844aa798a7786da69a, type: 3}
     money: 1.7
-  - product: {fileID: 0}
-    money: 0
-  - product: {fileID: 0}
-    money: 0
-  - product: {fileID: 0}
-    money: 0
-  - product: {fileID: 0}
-    money: 0
+  - product: {fileID: 1041297659307733662, guid: a349573b9394ffa4aaa24206f328731a, type: 3}
+    money: 1.4
+  - product: {fileID: 1041297659307733662, guid: 51fdfa476041adf429c92714c3991f34, type: 3}
+    money: 2

@@ -14,7 +14,7 @@ public class CustomerMoveToCounterState : CustomerBaseState
         //Lists.lists.productsImage[customer.id].GetComponent<Image>().color = newColor;
 
         customer.animator.SetBool("Walk", true);
-        targetPos = new Vector3(customer.productsPoint.transform.position.x, customer.transform.position.y, customer.productsPoint.transform.position.z);
+        targetPos = new Vector3(customer.counterPoint.transform.position.x, customer.transform.position.y, customer.counterPoint.transform.position.z);
         customer.GetComponent<NavMeshAgent>().SetDestination(targetPos);
     }
 
