@@ -25,19 +25,10 @@ public class CollectProductState : CustomerBaseState
                 SpawnCollectedProduct.spawnCollected.SpawnProductImage(Lists.lists.productsImage[customer.id].GetComponent<Image>().sprite);
 
                 customer.SwitchState(customer.moveToProductState);
-
-                Debug.Log(customer.money);
-
-                //Transform productsPointPos = customer.productsPoint.transform;
-                //float newPosX = productsPointPos.position.x;
-                //newPosX--;
-                //customer.productsPoint.transform.position = new Vector3(newPosX, productsPointPos.position.y, productsPointPos.position.z);
             });
         JsonSave.json.product[customer.id].transform.DOScale(new Vector3(0.2f, 0.2f, 0.2f), 1).SetEase(Ease.Linear).OnComplete(
             () => 
             {
-                //GameObject.Destroy(JsonSave.json.product[customer.id]);
-                //customer.SwitchState(customer.MoveToProductState);
             });
     }
 

@@ -16,7 +16,7 @@ MonoBehaviour:
   - customers: {fileID: 1972116318970838603, guid: 7b9bd4f99cc9502418d9b65caee804da, type: 3}
     productsCount: 2
     money: 4
-    generosity: 20
+    generosity: 1
   - customers: {fileID: 175692964876585289, guid: 629093726d1357b4dbc95c8ff07027dc, type: 3}
     productsCount: 2
     money: 10

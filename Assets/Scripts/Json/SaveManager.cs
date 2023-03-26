@@ -7,7 +7,6 @@ public static class SaveManager
 {
     public static string directory = "/SaveData/";
     public static string fileName = "SaveProduct.json";
-
     public static void Save(SaveObject so)
     {
         string dir = Application.persistentDataPath + directory;
@@ -18,6 +17,7 @@ public static class SaveManager
         }
         string json = JsonUtility.ToJson(so);
         File.WriteAllText(dir + fileName, json);
+        Debug.Log(dir);
     }
     public static SaveObject Load()
     {

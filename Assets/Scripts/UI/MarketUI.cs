@@ -18,7 +18,8 @@ public class MarketUI : MonoBehaviour
     public GameObject market;
     public GameObject shop;
     string moneyKey = "Money", energyKey = "Energy";
-    float moneyCount, energyCount;
+    public float moneyCount, energyCount;
+    public int id;
     int sceneId;
     private void Awake()
     {
@@ -26,14 +27,9 @@ public class MarketUI : MonoBehaviour
     }
     void Start()
     {
-        //for (int i = 0; i < Lists.lists.extraProductsImage.Count; i++)
-        //{
-        //    Lists.lists.extraProductsImage[i].GetComponent<Button>().onClick.AddListener(ExtraProductMove);
-        //}
-
         sceneId = SceneManager.GetActiveScene().buildIndex;
         //moneyCount = PlayerPrefs.GetFloat(moneyKey);
-        moneyCount = 1000;
+        moneyCount = 0;
         moneyText.text = "" + moneyCount;
 
         if (PlayerPrefs.HasKey(energyKey))
@@ -61,10 +57,6 @@ public class MarketUI : MonoBehaviour
             sceneId = 2;
             StartCoroutine(SceneLoad());
         }
-    }
-    void Update()
-    {
-
     }
     IEnumerator SceneLoad()
     {
@@ -115,42 +107,35 @@ public class MarketUI : MonoBehaviour
     }
     public void OfferStart()
     {
-        //customerState = GameObject.FindObjectOfType<CustomerStateManager>();
-        //customerState.currentState = customerState.customerOfferState;
         shop.SetActive(true);
-        for (int i = 0; i < Lists.lists.extraProductsImage.Count; i++)
-        {
-            Lists.lists.extraProductsImage[i].GetComponent<Button>().onClick.AddListener(ExtraProductMove);
-        }
     }
     public void NonOffer()
     {
-        customerState = GameObject.FindObjectOfType<CustomerStateManager>();
-        customerState.currentState = customerState.moveToExitState;
+        customerState = FindObjectOfType<CustomerStateManager>();
+        customerState.SwitchState(customerState.moveToExitState);
     }
-    void ExtraProductMove()
+    public void CustomerBuyToExtraProducts(int buttonId)
     {
-        Debug.Log("extra");
-        customerState = GameObject.FindObjectOfType<CustomerStateManager>();
-        customerState.currentState = customerState.customerOfferState;
-
-        for (int i = 0; i < Lists.lists.extraProductsImage.Count; i++)
+        customerState = FindObjectOfType<CustomerStateManager>();
+        id = buttonId;
+        if (customerState.money >= Data.data.extraProducts.extraProducts[id].money && customerState.generosity >= Data.data.customers.customers[SpawnCustomers.spawnCustomers.customerId].generosity && JsonSave.json.save.extraProducts[id] == true)
         {
-            Lists.lists.extraProductsImage[i].GetComponent<Button>().onClick.RemoveListener(ExtraProductMove);
+            customerState.SwitchState(customerState.customerOfferState);
+            shop.SetActive(false);
+            return;
         }
+        /*
+        else if (customerState.money >= Data.data.extraProducts.extraProducts[id].money && customerState.generosity < Data.data.customers.customers[SpawnCustomers.spawnCustomers.customerId].generosity)
+        {
+            customerState.SwitchState(customerState.failExtraProductState);
+            shop.SetActive(false);
+        }
+    */
+        customerState.SwitchState(customerState.failExtraProductState);
         shop.SetActive(false);
     }
-    //public void OpenShop()
-    //{
-    //    bool state = shop.activeSelf;
-    //    shop.SetActive(!state);
-    //}
     public void ExtraProductsBuy(int id)
     {
-        //if (customerState.money >= Data.data.extraProducts.extraProducts[id].money && customerState.generosity >= Data.data.customers.customers[SpawnCustomers.spawnCustomers.customerId].generosity)
-        //{
-        //    customerState.money -= Data.data.extraProducts.extraProducts[id].money;
-        //}
         if (moneyCount >= Data.data.extraProducts.extraProducts[id].money && JsonSave.json.save.extraProducts[id] == false)
         {
             moneyCount -= Data.data.extraProducts.extraProducts[id].money;

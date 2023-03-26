@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class CustomerStateManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class CustomerStateManager : MonoBehaviour
     public GameObject rightDoor;
     public GameObject leftDoor;
     public GameObject counterPoint;
+    public Image hatch;
     public Animator animator;
     public int id;
     public float money;
@@ -21,12 +23,14 @@ public class CustomerStateManager : MonoBehaviour
     public CollectProductState collectProductState = new CollectProductState();
     public CustomerOfferState customerOfferState = new CustomerOfferState();
     public CustomerMoveToExitState moveToExitState = new CustomerMoveToExitState();
+    public FailExtraProductState failExtraProductState = new FailExtraProductState();
     void Start()
     {
         generosity = Random.Range(0, 100);
         rightDoor = GameObject.Find("RightDoor");
         leftDoor = GameObject.Find("LeftDoor");
         counterPoint = GameObject.Find("CounterPoint");
+        hatch = GameObject.Find("Hatch").GetComponent<Image>();
         animator = GetComponent<Animator>();
         money = Data.data.customers.customers[SpawnCustomers.spawnCustomers.customerId].money;
 

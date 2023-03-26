@@ -25,6 +25,11 @@ public class SpawnCustomers : MonoBehaviour
         {
             customersLevel = 2;
         }
+        SpawnCustomer();
+    }
+
+    public void SpawnCustomer()
+    {
         //customerId = Random.Range(0, customersLevel);
         customerId = Random.Range(0, 1);
         Quaternion rotation = Data.data.customers.customers[customerId].customers.transform.rotation;

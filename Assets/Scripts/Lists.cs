@@ -9,6 +9,7 @@ public class Lists : MonoBehaviour
     public List<GameObject> sections = new List<GameObject>();
     public List<GameObject> shelves = new List<GameObject>();
     public List<Image> productsImage = new List<Image>();
+    public List<Image> collectProductsImage = new List<Image>();
     public List<Image> extraProductsImage = new List<Image>();
     private void Awake()
     {

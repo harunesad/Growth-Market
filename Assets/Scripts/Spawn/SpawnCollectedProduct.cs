@@ -29,5 +29,6 @@ public class SpawnCollectedProduct : MonoBehaviour
         collectedProduct.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         collectedProduct.GetComponent<RectTransform>().localPosition = pos;
         collectedProduct.GetComponent<Image>().sprite = productSprite;
+        Lists.lists.collectProductsImage.Add(collectedProduct.GetComponent<Image>());
     }
 }

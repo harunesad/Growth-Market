@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   extraProducts:
   - product: {fileID: 6917571508096173109, guid: 26f1839bb1594314c948a1efb03c308a, type: 3}
-    money: 1
+    money: 0.1
   - product: {fileID: 7038021636640272066, guid: 919a7299e3f67394184a9876e76afda4, type: 3}
     money: 1.5
   - product: {fileID: 467252856447392168, guid: bcbfbfdf13e55424891125623288ba9e, type: 3}
